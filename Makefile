@@ -6,7 +6,7 @@
 #    By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 17:38:11 by tiade-al          #+#    #+#              #
-#    Updated: 2024/04/28 23:42:46 by tiade-al         ###   ########.fr        #
+#    Updated: 2024/04/29 15:28:06 by tiade-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,30 +15,23 @@ Program = libftprintf.a
 files = ft_aux.c\
 		ft_printf.c\
 
-bonus = 
-
 Compiler = cc
 
 CmpFlags = -Wall -Wextra -Werror
 
 OFILES = $(files:.c=.o)
 
-OBONUS = $(bonus:.c=.o)
-
 NAME = $(Program)
 
-$(NAME): $(OFILES) $(OBONUS)
-	$(Compiler) $(CmpFlags) -c $(files) $(bonus) -I./
-	ar -rc $(Program) $(OFILES) $(OBONUS)
+$(NAME): $(OFILES)
+	$(Compiler) $(CmpFlags) -c $(files) -I./
+	ar -rc $(Program) $(OFILES)
 
 all: $(NAME)
 
-bonus: $(OBONUS) $(BONUS)
-	ar -rc $(NAME) $(OBONUS) $(BONUS)
-
 clean:
 	rm -f $(NAME)
-	rm -f $(OFILES) $(OBONUS)
+	rm -f $(OFILES)
 
 fclean: clean
 	rm -f $(NAME)

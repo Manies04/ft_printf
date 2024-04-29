@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:01:13 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/04/29 02:38:41 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:46:02 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_printchar(int c, long int *len)
 	write(1, &c, 1);
 	(*len)++;
 }
+
 /*@brief Prints a string to standard output.
 *@param str The string to print.
 *@param len: A pointer that will be used to keep track of the total length of 
@@ -42,7 +43,8 @@ void	ft_printstr(char *str, long int *len)
 /* @brief Prints a number to standard output.
 *@param num: The number to be printed.
 *@param len: A pointer that will be used to keep track of the total length of 
-*the printed output.
+*the printed output.unsigned_dec(unsigned int num, long int *len)
+{
 *@return None.
  */
 void	ft_printnum(long int num, long int *len)
@@ -56,20 +58,7 @@ void	ft_printnum(long int num, long int *len)
 		ft_printnum(num / 10, len);
 	ft_printchar(num % 10 + '0', len);
 }
-/* @brief Prints an unsigned decimal number.
-*@param num: The number to be printed.
-*@param len: A pointer that will be used to keep track of the total length of 
-*the printed output.
-*@return None.
- */
-void	ft_print_unsigned_dec(unsigned int num, long int *len)
-{
-	if (num < 0)
-		return ;
-	if (num > 9)
-		ft_print_unsigned_dec(num / 10, len);
-	ft_printchar(num % 10 + '0', len);
-}
+
 /* @brief Prints an hexadecimal number.
 *@param num: The number to be printed.
 *@param is_upper: 0 for lowercase, 1 for uppercase.
@@ -80,7 +69,7 @@ void	ft_print_unsigned_dec(unsigned int num, long int *len)
 void	ft_print_hex(unsigned int num, int is_upper, long int *len)
 {
 	char	*exchar;
-	
+
 	if (is_upper)
 		exchar = "0123456789ABCDEF";
 	else
@@ -89,7 +78,9 @@ void	ft_print_hex(unsigned int num, int is_upper, long int *len)
 		ft_print_hex(num / 16, is_upper, len);
 	ft_printchar(exchar[num % 16], len);
 }
-/* @brief This function prints a hexadecimal representation of a memory address(ptr).
+
+/* @brief This function prints a hexadecimal representation of a memory 
+*address(ptr).
 *@param ptr: The pointer to be printed.
 *@param len: A pointer that will be used to keep track of the total length of 
 *the printed output.
@@ -99,7 +90,7 @@ void	ft_printptr(unsigned long int ptr, long int *len)
 {
 	char	*exchar;
 
-	if(!ptr)
+	if (!ptr)
 	{
 		ft_printstr("(nil)", len);
 		return ;
