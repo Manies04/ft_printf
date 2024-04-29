@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:01:13 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/04/29 02:29:26 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/04/29 02:38:41 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 *the printed output.
 *@return length of the printed output.
  */
-int	ft_printchar(int c, long int *len)
+void	ft_printchar(int c, long int *len)
 {
 	write(1, &c, 1);
 	(*len)++;
