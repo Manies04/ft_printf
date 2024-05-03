@@ -6,36 +6,30 @@
 #    By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 17:38:11 by tiade-al          #+#    #+#              #
-#    Updated: 2024/04/29 15:28:06 by tiade-al         ###   ########.fr        #
+#    Updated: 2024/04/30 22:31:33 by tiade-al         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Program = libftprintf.a
+SRCS = ft_aux.c ft_printf.c
 
-files = ft_aux.c\
-		ft_printf.c\
+OBJS			= $(SRCS:.c=.o)
 
-Compiler = cc
+CC				= cc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror 
 
-CmpFlags = -Wall -Wextra -Werror
+NAME			= libftprintf.a
 
-OFILES = $(files:.c=.o)
-
-NAME = $(Program)
-
-$(NAME): $(OFILES)
-	$(Compiler) $(CmpFlags) -c $(files) -I./
-	ar -rc $(Program) $(OFILES)
-
-all: $(NAME)
+all:			$(NAME)
+$(NAME):		$(OBJS)
+				ar rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
+				$(RM) $(OBJS)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
-re: fclean all
+re:				fclean $(NAME) 
 
-.PHONY: all, clean, fclean, re
+.PHONY:			all clean fclean re bonus

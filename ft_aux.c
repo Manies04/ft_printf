@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:01:13 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/04/29 15:46:02 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/04/30 22:58:04 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,30 @@ void	ft_print_hex(unsigned int num, int is_upper, long int *len)
  */
 void	ft_printptr(unsigned long int ptr, long int *len)
 {
-	char	*exchar;
+	static int	first_call = 1;
+	char		*exchar;
 
 	if (!ptr)
 	{
 		ft_printstr("(nil)", len);
 		return ;
 	}
-	exchar = "0123456789abcdef";
-	if (ptr < 16)
+	if (first_call)
 	{
 		ft_printstr("0x", len);
-		ft_printchar(exchar[ptr % 16], len);
+		first_call = 0;
 	}
-	ft_printptr(ptr / 16, len);
+	exchar = "0123456789abcdef";
+	if (ptr >= 16)
+		ft_printptr(ptr / 16, len);
 	ft_printchar(exchar[ptr % 16], len);
+	if (ptr < 16)
+		first_call = 1;
 }
+/* int main(void)
+{
+    long int len = 0;
+    int var = 42;
+    ft_printptr((unsigned long int)&var, &len);
+    return 0;
+} */

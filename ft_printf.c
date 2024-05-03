@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:26:35 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/04/29 15:25:11 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:21:32 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_convert(char str, va_list va, long int *len)
 
 int	ft_printf(const char *str, ...)
 {
-	int				len;
+	long int		len;
 	va_list			va;
 	unsigned int	i;
 
@@ -43,7 +43,7 @@ int	ft_printf(const char *str, ...)
 	va_start (va, str);
 	while (str[i])
 	{
-		if (str == '%')
+		if (str[i] == '%')
 			ft_convert(str[++i], va, &len);
 		else
 			ft_printchar(str[i], &len);
