@@ -6,7 +6,7 @@
 /*   By: tiade-al <tiade-al@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:01:13 by tiade-al          #+#    #+#             */
-/*   Updated: 2024/04/30 22:58:04 by tiade-al         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:24:27 by tiade-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	ft_printchar(int c, long int *len)
 void	ft_printstr(char *str, long int *len)
 {
 	if (!str)
+	{
+		ft_printstr("(null)", len);
 		return ;
+	}
 	while (*str)
 	{
 		ft_printchar(*str, len);
